@@ -3,6 +3,7 @@ class supervisor(
   $autoupgrade = false,
   $service_ensure = 'running',
   $service_enable = true,
+  $unix_http_server_file = '/var/run/supervisor.sock',
   $enable_inet_server = false,
   $inet_server_port = 9000,
   $inet_server_user = undef,
@@ -11,6 +12,8 @@ class supervisor(
   $logfile_maxbytes = '500MB',
   $logfile_backups = 10,
   $loglevel = 'info',
+  $pidfile = '/var/run/supervisord.pid',
+  $nodaemon = false,
   $minfds = 1024,
   $minprocs = 200,
   $childlogdir = '/var/log/supervisor',
@@ -18,7 +21,8 @@ class supervisor(
   $user = undef,
   $umask = '022',
   $supervisor_environment = undef,
-  $identifier = undef
+  $identifier = undef,
+  $supervisorctl_serverurl = 'unix:///var/run/supervisor.sock',
 ) inherits supervisor::params {
 
   case $ensure {
