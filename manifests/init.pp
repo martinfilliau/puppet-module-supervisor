@@ -23,6 +23,7 @@ class supervisor(
   $supervisor_environment = undef,
   $identifier = undef,
   $supervisorctl_serverurl = 'unix:///var/run/supervisor.sock',
+  $unix_http_server_chown = '',
 ) inherits supervisor::params {
 
   case $ensure {

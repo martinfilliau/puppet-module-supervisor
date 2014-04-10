@@ -1,5 +1,8 @@
 [unix_http_server]
 file=<%= @unix_http_server_file %>
+<% unless @unix_http_server_chown == "" -%>
+chown=<%= @unix_http_server_chown %>
+<% end -%>
 
 <% if @enable_inet_server -%>
 [inet_http_server]
